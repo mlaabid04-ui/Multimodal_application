@@ -4,6 +4,8 @@
 
 from mode_manager.mode_manager import ModeManager
 from shared.protocol import InputMode
+from eye_tracking.eye_module import start_eye_tracking, get_eye_command
+
 
 
 # --------------------------------------------------
@@ -28,11 +30,6 @@ def get_gesture_command():
     return ""
 
 
-def get_eye_command():
-    # À remplacer par le module eye_tracking
-    return "Regard détecté"
-
-
 def avatar_react(intent):
     # À remplacer par le vrai module avatar
     print(f"[AVATAR] Mode={intent.mode.value} | Message={intent.content}")
@@ -44,6 +41,8 @@ def avatar_react(intent):
 
 def main_loop():
     manager = ModeManager()
+    # Démarrage du module eye-tracking
+    start_eye_tracking()
 
     print("SmartVision Multimodal System started")
 
